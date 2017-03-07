@@ -3,14 +3,105 @@
 
 	<head>
 		<title>G-Code Modifier</title>
-		<!script type="text/javascript" src="main.js"><!/script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="main.js"></script>
 	</head>
 
 	<body>
-		<form action="main.php" method="POST">
-			<input type="file" name="inputfile" accept="text/javascript"/>
-			<input type="submit" value="Enter"/>
-		</form>
+		<div class="jumbotron">
+			<h1>G-Code Modifier</h1>
+			<h4>Make your printer settings change mid-print.</h4>
+		</div>
+		
+		<table border id="maintable">
+			<tr>
+				<td>
+					<table id="filetable">
+						<tr>
+							<td><input type="file" id="fileselect" onchange="addFile(this.files[0])"/></td>
+						</tr>
+						<tr>
+							<td><button onclick="readFile()"/>Submit</td>
+						</tr>
+					</table>
+				</td>
+				<td id="settings">
+					<form method="POST" action="settings.php">
+					<table id="settingstable">
+						<tr>
+							<td>
+								<button class="accordion">Speed</button>
+								<div class="panel">
+  									<table id="speeds">
+										<tr>
+											<td>Start Speed:</td>
+											<td><input type=text id="startspeed" name="startspeed"></td>
+										</tr>
+										<tr>
+											<td>End Speed:</td>
+											<td><input type=text id="endspeed" name="endspeed"></td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="accordion">Temperature</button>
+								<div class="panel">
+  									<table id="temps">
+										<tr>
+											<td>Start Speed:</td>
+											<td><input type=text id="startspeed" name="startspeed"></td>
+										</tr>
+										<tr>
+											<td>End Speed:</td>
+											<td><input type=text id="endspeed" name="startspeed"></td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="accordion">ZZZ</button>
+								<div class="panel">
+  									<table id="zzz">
+										<tr>
+											<td>Start Speed:</td>
+											<td><input type=text id="startspeed" name="startspeed"></td>
+										</tr>
+										<tr>
+											<td>End Speed:</td>
+											<td><input type=text id="endspeed" name="endspeed"></td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="accordion">Save/Load Settings</button>
+								<div class="panel">
+  									<table id="settingsload">
+										<tr>
+											<td><input type=radio name=setting value=save>Save Settings</td>
+											<td><input type=text id="saveid"></td>
+										</tr>
+										<tr>
+											<td><input type=radio name=setting value=load>Load Settings</td>
+											<td><input type=text id="loadid"></td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>
+					</table>
+					</form>
+					<script type="text/javascript" src="createMenu.js"></script>
+				</td>
+			</tr>
+		</table>
 	</body>
 
 </html>
